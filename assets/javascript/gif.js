@@ -28,6 +28,8 @@ $(document).ready( function() {
 
     function makeGif() {
 
+        $("#gif-display").empty();
+
         var whatToSearch = $(this).attr("gif-topic")
         var API = "HxkLNilC8OgbgenMW1pjUSt5JOV4ynGe";
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + API + "&q=" + whatToSearch + "&limit=10&offset=0&rating=PG-13&lang=en";
@@ -37,15 +39,12 @@ $(document).ready( function() {
             method: "GET",
         }).then(function(response) {
             console.log(response)
-            // $("#gif-display").empty();
-            $("#gif-display").text(JSON.stringify(response));
-
-            // for (var i = 0; i < response.data.length; i++) {
-            //     var newGif = $("<img>");
-            //     newGif.addClass("gif-generator");
-            //     newGif.text(response.data[i].images.fixed_width.url)
-            //     $("#gif-display").append(newGif);
-            // }
+            for (var i = 0; i < response.data.length; i++) {
+                var newGif = $("<img>");
+                newGif.addClass("gif-generator");
+                newGif.attr("src", response.data[i].images.original_still.url)
+                $("#gif-display").append(newGif);
+            }
             
 
         })
@@ -53,6 +52,8 @@ $(document).ready( function() {
     }
 
 })
+
+// response.data[i].embed_url
 
 
 // use for testin: https://api.giphy.com/v1/gifs/search?api_key=HxkLNilC8OgbgenMW1pjUSt5JOV4ynGe&q=tacos&limit=25&offset=0&rating=PG-13&lang=en
