@@ -40,16 +40,47 @@ $(document).ready( function() {
         }).then(function(response) {
             console.log(response)
             for (var i = 0; i < response.data.length; i++) {
+    
                 var newGif = $("<img>");
-                newGif.addClass("gif-generator");
-                newGif.attr("src", response.data[i].images.original_still.url)
+                newGif.addClass("gif-generated");
+                var gifMove = response.data[i].images.fixed_width.url
+                var gifStill = response.data[i].images.fixed_width_still.url
+
+                newGif.attr({"gifMove": gifMove, "gifStill": gifStill});
+                newGif.attr({"src": gifStill, "state": "still"});
+
+                var rating = $("<p>");
+                rating.addClass("gif-rating")
+                ratingUpper = (response.data[i].rating).toUpperCase();
+                rating.text("Rating: " + ratingUpper)
+                
                 $("#gif-display").append(newGif);
+                $("#gif-display").append(rating);
+
+                $(".gif-generated").on("click", function (event) {
+                    var state = $(this).attr("state");
+
+                    if (state === "still") {
+                        $(this).attr("src", $(this).attr("gifMove"));
+                        $(this).attr("state", "active");
+                    }
+
+                    if (state === "active") {
+                        $(this).attr("src", $(this).attr("gifStill"));
+                        $(this).attr("state", "still");
+                    }
+
+                })
+
             }
-            
-
         })
-
     }
+
+    // LISTEN FOR GIF CLICK
+    
+
+   
+
 
 })
 
