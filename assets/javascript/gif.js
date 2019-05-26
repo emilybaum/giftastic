@@ -40,10 +40,11 @@ $(document).ready( function() {
         }).then(function(response) {
             console.log(response)
             for (var i = 0; i < response.data.length; i++) {
-    
+                
+                // MAKE GIF AS AN IMAGE AND SET AS STILL IMAGE
                 var newGif = $("<img>");
                 newGif.addClass("gif-generated");
-                var gifMove = response.data[i].images.fixed_width.url
+                var gifMove = response.data[i].images.fixed_width.url;
                 var gifStill = response.data[i].images.fixed_width_still.url
 
                 newGif.attr({"gifMove": gifMove, "gifStill": gifStill});
@@ -57,17 +58,20 @@ $(document).ready( function() {
                 $("#gif-display").append(newGif);
                 $("#gif-display").append(rating);
 
+                // LISTEN FOR GIF CLICK TO MAKE MOVE (OR STILL)
                 $(".gif-generated").on("click", function (event) {
                     var state = $(this).attr("state");
 
                     if (state === "still") {
-                        $(this).attr("src", $(this).attr("gifMove"));
                         $(this).attr("state", "active");
+                        $(this).attr("src", $(this).attr("gifMove"));
+                        
                     }
 
                     if (state === "active") {
-                        $(this).attr("src", $(this).attr("gifStill"));
                         $(this).attr("state", "still");
+                        $(this).attr("src", $(this).attr("gifStill"));
+                        
                     }
 
                 })
@@ -76,7 +80,6 @@ $(document).ready( function() {
         })
     }
 
-    // LISTEN FOR GIF CLICK
     
 
    
