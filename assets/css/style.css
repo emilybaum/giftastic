@@ -10,9 +10,7 @@ font-family: 'Lato', sans-serif;
     color: #8a8473;
 }
 
-.gif-rating {
-    padding: 0px;
-}
+
 
 iframe {
     width: 100%;
@@ -21,16 +19,6 @@ iframe {
 
 label {
     font-family: 'Lato', sans-serif;
-}
-
-.test {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
-
-.gif-rating {
-    padding: 1px;
 }
 
 footer {
@@ -46,6 +34,16 @@ footer {
 
 form {
     text-align: center;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    /* justify-content: space-around; */
+}
+
+.test {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
 }
 
 .gif-button {
@@ -53,18 +51,23 @@ form {
 }
 
 .gifAndRating-div {
-    font-family: 'Lato', sans-serif;
+    
     display: inline-block;
     border: 3px solid #8a8473;
     margin: 5px;
     text-align: center;
 }
 
+.gif-rating {
+    padding: 0px;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+}
+
 #gif-display {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap;    
 }
 
 .search {

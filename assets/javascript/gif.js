@@ -1,6 +1,6 @@
 $(document).ready( function() { 
 
-    var topics = ["puppies", "pupper", "pup", "dog", "doggo"];
+    var topics = ["puppy", "puppies", "pupper", "pup", "dog", "doggo"];
 
     // CREATE BUTTONS FOR ARRAY OF GIFS
     function createButtons() {
