@@ -5,26 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta https-equiv="Content-type" content="application/x-www-form-urlencoded; charset=UTF-8"/>
+    <link href="https://fonts.googleapis.com/css?family=Arvo:bold|Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/javascript/gif.js"></script>
+    
     <title>EB gifs</title>
 </head>
 <body>
-    <!-- <button id="test">Click me</button> -->
-    <div id="button-holder">Where the topic buttons go</div>
-    <div id="search-bar">Search bar</div>
-    <form>
-        <label for="search-input">Add a gif topic</label>
-        <input id="search-input" type="text" >
-        <input id="add-gif" type="submit" value="Add it!">
-    </form>
+
+    <div class="container">
+
+        <div id="title" class="row col-sm-12 pt-3">
+            <header >
+                <h1>Puppy Gif Generator</h1>
+            </header>
+        </div>
+
+        <div class="row search-row">
+            <div class="col-md-3">
+                <iframe src="https://giphy.com/embed/l4FGI8GoTL7N4DsyI" frameBorder="0" class="giphy-embed"></iframe>
+            </div>
+
+            <div class="col-md-6 search mt-3">
+                <div id="search-bar">
+                    <form>
+                        <label for="search-input">Use the search to find more dogs, or anything you want</label>
+                        <br>
+                        <div class="test">
+                            <input id="search-input" type="text">
+                            <input id="add-gif" type="submit" value="Add it!" class="ml-1 btn btn-secondary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <iframe id="reverse" src="https://giphy.com/embed/l4FGI8GoTL7N4DsyI" frameBorder="0" class="giphy-embed"></iframe>
+            </div>
+        </div>
+
+        <div class="row col-md-12 mt-3">
+            <div id="button-holder">Where the topic buttons go</div>
+        </div>
+    
+        <div class="row col-sm-12 mt-3">
+            <div id="gif-display"></div>
+        </div>
+        
+        <footer class="pt-3">
+            <p id="footer-text" class="d-none d-block">// from the mind of <a href="https://github.com/emilybaum"
+                    target="_blank">emilybaum</a></p>
+        </footer>
+
+    </div>
 
 
-    <div id="gif-display"></div>
 
 </body>
 </html>

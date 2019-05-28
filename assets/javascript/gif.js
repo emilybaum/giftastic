@@ -1,16 +1,16 @@
 $(document).ready( function() { 
 
-    var topics = ["puppies", "kittens", "rhino"];
+    var topics = ["puppies", "pupper", "pup", "dog", "doggo"];
 
     // CREATE BUTTONS FOR ARRAY OF GIFS
     function createButtons() {
         $("#button-holder").empty();
         for (var i = 0; i < topics.length; i++) {
-            var button = $("<button>");
-            button.addClass("gif-button");
+            var button = $("<button type='button'>");
+            button.addClass("btn btn-secondary gif-button");
             button.attr("gif-topic", topics[i]);
             button.text(topics[i]);
-            $("#button-holder").append(button);
+            $("#button-holder").append(button); 
         }
     }
     createButtons();
@@ -20,6 +20,7 @@ $(document).ready( function() {
         event.preventDefault();
         var newTopic = $("#search-input").val().trim();
         topics.push(newTopic);
+        document.getElementById("search-input").value = "";
         createButtons();
     })
     
@@ -32,7 +33,7 @@ $(document).ready( function() {
 
         var whatToSearch = $(this).attr("gif-topic")
         var API = "HxkLNilC8OgbgenMW1pjUSt5JOV4ynGe";
-        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + API + "&q=" + whatToSearch + "&limit=10&offset=0&rating=PG-13&lang=en";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + API + "&q=" + whatToSearch + "&limit=10&offset=0&rating=PG&lang=en";
 
         $.ajax({
             url: queryURL,
@@ -50,13 +51,18 @@ $(document).ready( function() {
                 newGif.attr({"gifMove": gifMove, "gifStill": gifStill});
                 newGif.attr({"src": gifStill, "state": "still"});
 
+                // ADD RATING UNDER GIF
                 var rating = $("<p>");
                 rating.addClass("gif-rating")
                 ratingUpper = (response.data[i].rating).toUpperCase();
                 rating.text("Rating: " + ratingUpper)
+
+                var gifAndRating = $("<div>").append(newGif).append(rating);
+                gifAndRating.addClass("gifAndRating-div")
+
+                $("#gif-display").append(gifAndRating);
+
                 
-                $("#gif-display").append(newGif);
-                $("#gif-display").append(rating);
 
                 // LISTEN FOR GIF CLICK TO MAKE MOVE (OR STILL)
                 $(".gif-generated").on("click", function (event) {
@@ -65,29 +71,15 @@ $(document).ready( function() {
                     if (state === "still") {
                         $(this).attr("state", "active");
                         $(this).attr("src", $(this).attr("gifMove"));
-                        
                     }
 
                     if (state === "active") {
                         $(this).attr("state", "still");
                         $(this).attr("src", $(this).attr("gifStill"));
-                        
                     }
-
                 })
-
             }
         })
-    }
-
-    
-
-   
-
-
+    } 
 })
 
-// response.data[i].embed_url
-
-
-// use for testin: https://api.giphy.com/v1/gifs/search?api_key=HxkLNilC8OgbgenMW1pjUSt5JOV4ynGe&q=tacos&limit=25&offset=0&rating=PG-13&lang=en
