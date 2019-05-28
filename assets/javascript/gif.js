@@ -63,29 +63,14 @@ $(document).ready( function() {
                 gifAndRating.addClass("gifAndRating-div")
 
                 $("#gif-display").append(gifAndRating);
-
-                makeMove();
-
-                // LISTEN FOR GIF CLICK TO MAKE MOVE (OR STILL)
-                // $(".gif-generated").on("click", function (event) {
-                //     var state = $(this).attr("state");
-
-                //     if (state === "still") {
-                //         $(this).attr("state", "active");
-                //         $(this).attr("src", $(this).attr("gifMove"));
-                //     }
-
-                //     if (state === "active") {
-                //         $(this).attr("state", "still");
-                //         $(this).attr("src", $(this).attr("gifStill"));
-                //     }
-                // })
             }
         })
     } 
 
-function makeMove() {
-    $(".gif-generated").on("click", function (event) {
+    // LISTEN FOR GIF CLICK TO MAKE MOVE (OR STILL)
+    $(document).on("click", ".gif-generated", makeMove);
+
+    function makeMove() {
         var state = $(this).attr("state");
 
         if (state === "still") {
@@ -97,9 +82,7 @@ function makeMove() {
             $(this).attr("state", "still");
             $(this).attr("src", $(this).attr("gifStill"));
         }
-    })
-}
-
+    }
 
 
 })
