@@ -30,6 +30,8 @@ $(document).ready( function() {
     function makeGif() {
 
         $("#gif-display").empty();
+        $(".before-gen").addClass("d-none");
+        $(".after-gen").removeClass("d-none");
 
         var whatToSearch = $(this).attr("gif-topic")
         var API = "HxkLNilC8OgbgenMW1pjUSt5JOV4ynGe";
@@ -62,24 +64,43 @@ $(document).ready( function() {
 
                 $("#gif-display").append(gifAndRating);
 
-                
+                makeMove();
 
                 // LISTEN FOR GIF CLICK TO MAKE MOVE (OR STILL)
-                $(".gif-generated").on("click", function (event) {
-                    var state = $(this).attr("state");
+                // $(".gif-generated").on("click", function (event) {
+                //     var state = $(this).attr("state");
 
-                    if (state === "still") {
-                        $(this).attr("state", "active");
-                        $(this).attr("src", $(this).attr("gifMove"));
-                    }
+                //     if (state === "still") {
+                //         $(this).attr("state", "active");
+                //         $(this).attr("src", $(this).attr("gifMove"));
+                //     }
 
-                    if (state === "active") {
-                        $(this).attr("state", "still");
-                        $(this).attr("src", $(this).attr("gifStill"));
-                    }
-                })
+                //     if (state === "active") {
+                //         $(this).attr("state", "still");
+                //         $(this).attr("src", $(this).attr("gifStill"));
+                //     }
+                // })
             }
         })
     } 
+
+function makeMove() {
+    $(".gif-generated").on("click", function (event) {
+        var state = $(this).attr("state");
+
+        if (state === "still") {
+            $(this).attr("state", "active");
+            $(this).attr("src", $(this).attr("gifMove"));
+        }
+
+        if (state === "active") {
+            $(this).attr("state", "still");
+            $(this).attr("src", $(this).attr("gifStill"));
+        }
+    })
+}
+
+
+
 })
 

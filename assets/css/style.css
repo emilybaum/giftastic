@@ -33,12 +33,13 @@ iframe {
 }
 
 #search-bar {
-    display: flex;
+    display: inline;
     justify-content: space-around;
 }
 
 .search {
     text-align: center;
+    justify-content: space-around;
 }
 
 form {
@@ -46,7 +47,7 @@ form {
     display: flex;
     /* align-content: center; */
     flex-direction: column;
-    /* justify-content: space-around; */
+    
 }
 
 label {
@@ -54,9 +55,15 @@ label {
 }
 
 .instructions {
-    display: inline-block;
-    width: 100%;
+    font-size: 12px;
+    text-emphasis: italic;
 }
+
+.arrow {
+    width: 20px;
+    display: inline-block;
+}
+
 
 .test {
     display: flex;
@@ -73,6 +80,10 @@ label {
     border: 3px solid #8a8473;
     margin: 5px;
     text-align: center;
+}
+
+img:hover {
+    cursor: pointer;
 }
 
 .gif-rating {
