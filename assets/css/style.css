@@ -3,28 +3,23 @@ font-family: 'Arvo', serif;
 font-family: 'Lato', sans-serif;
  */
 
+p {
+    margin: 0px;   
+}
 #title {
     text-align: center;
     font-family: 'Arvo', serif;
-    border-bottom: 3px solid #8a8473;
     color: #8a8473;
 }
 
-
+h1 {
+    width: 100%;
+}
 
 iframe {
-    width: 100%;
+    width: 95%;
     margin: 10px;
-}
-
-label {
-    font-family: 'Lato', sans-serif;
-}
-
-footer {
-    color: #8a8473;
-    text-align: center;
-    font-size: 12px;
+    align-content: center;
 }
 
 #reverse {
@@ -32,12 +27,35 @@ footer {
   transform: scaleX(-1);
 }
 
+.search-row {
+    background: #d2cbb5;
+    border-top: 3px solid #8a8473;
+}
+
+#search-bar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.search {
+    text-align: center;
+}
+
 form {
     text-align: center;
     display: flex;
-    align-content: center;
+    /* align-content: center; */
     flex-direction: column;
     /* justify-content: space-around; */
+}
+
+label {
+    font-family: 'Lato', sans-serif;
+}
+
+.instructions {
+    display: inline-block;
+    width: 100%;
 }
 
 .test {
@@ -51,7 +69,6 @@ form {
 }
 
 .gifAndRating-div {
-    
     display: inline-block;
     border: 3px solid #8a8473;
     margin: 5px;
@@ -70,11 +87,17 @@ form {
     flex-wrap: wrap;    
 }
 
-.search {
+body {
+    background-image: url("../images/concrete-wall.png");
+}
+
+.container {
+    background-color: #ffffff;
+}
+
+
+footer {
+    color: #8a8473;
     text-align: center;
+    font-size: 12px;
 }
-
-.search-row {
-    background: #d2cbb5;
-}
-
