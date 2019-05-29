@@ -1,6 +1,30 @@
 $(document).ready( function() { 
 
-    var topics = ["puppy", "puppies", "pupper", "pup", "dog", "doggo"];
+    // var topics = ["puppy", "puppies", "pupper", "pup", "dog", "doggo"];
+    var topics = JSON.parse(localStorage.getItem("gif-stored"));
+
+    if (!Array.isArray(topics)) {
+        topics = [];
+    }
+
+    // STARTER BUTTONS
+    function starterButtons() {
+        $("#button-holder").empty();
+        var startTopics = ["golden retriever", "puppy", "puppies", "pupper", "pup", "dog", "doggo"]
+        localStorage.setItem("gif-stored", JSON.stringify(startTopics));
+
+        for (var i = 0; i < startTopics.length; i++) {
+            var button = $("<button type='button'>");
+            button.addClass("btn btn-secondary gif-button");
+            button.attr("gif-topic", startTopics[i]);
+            button.text(startTopics[i]);
+            $("#button-holder").prepend(button);
+        }
+        
+    }
+    starterButtons();
+    
+
 
     // CREATE BUTTONS FOR ARRAY OF GIFS
     function createButtons() {
@@ -10,16 +34,18 @@ $(document).ready( function() {
             button.addClass("btn btn-secondary gif-button");
             button.attr("gif-topic", topics[i]);
             button.text(topics[i]);
-            $("#button-holder").append(button); 
+            localStorage.setItem("gif-stored", JSON.stringify(topics));
+            $("#button-holder").prepend(button); 
         }
     }
-    createButtons();
+    // createButtons();
 
     // ADD NEW GIF TO THE ARRAY OF GIFS
     $("#add-gif").on("click", function (event) {
         event.preventDefault();
         var newTopic = $("#search-input").val().trim();
         topics.push(newTopic);
+        localStorage.setItem("gif-stored", JSON.stringify(topics));
         document.getElementById("search-input").value = "";
         createButtons();
     })
@@ -28,9 +54,9 @@ $(document).ready( function() {
     $(document).on("click", ".gif-button", makeGif)
 
     function makeGif() {
-
         $("#gif-display").empty();
         $(".before-gen").addClass("d-none");
+        $(".cleared-gen").addClass("d-none");
         $(".after-gen").removeClass("d-none");
 
         var whatToSearch = $(this).attr("gif-topic")
@@ -84,6 +110,17 @@ $(document).ready( function() {
         }
     }
 
+    // CLEAR THE LOCAL STORAGE
+    $(document).on("click", "#gif-clear", clearStroage);
 
+    function clearStroage () {
+        localStorage.clear();
+        topics.splice(0, topics.length);
+        createButtons();
+
+        $(".before-gen").addClass("d-none");
+        $(".after-gen").addClass("d-none");
+        $(".cleared-gen").removeClass("d-none");
+    }
 })
 
