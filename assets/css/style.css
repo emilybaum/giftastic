@@ -12,6 +12,11 @@ p {
     color: #8a8473;
 }
 
+.subtitle {
+    width: 100%;
+    text-align: center;
+}
+
 h1 {
     width: 100%;
 }
@@ -100,6 +105,10 @@ img:hover {
 
 body {
     background-image: url("../images/concrete-wall.png");
+}
+
+.cleared-gen {
+    color: red;
 }
 
 footer {
