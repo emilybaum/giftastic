@@ -1,6 +1,5 @@
 $(document).ready( function() { 
 
-    // var topics = ["puppy", "puppies", "pupper", "pup", "dog", "doggo"];
     var topics = JSON.parse(localStorage.getItem("gif-stored"));
 
     if (!Array.isArray(topics)) {
@@ -38,7 +37,6 @@ $(document).ready( function() {
             $("#button-holder").prepend(button); 
         }
     }
-    // createButtons();
 
     // ADD NEW GIF TO THE ARRAY OF GIFS
     $("#add-gif").on("click", function (event) {
@@ -54,7 +52,6 @@ $(document).ready( function() {
     $(document).on("click", ".gif-button", makeGif)
 
     function makeGif() {
-        $("#gif-display").empty();
         $(".before-gen").addClass("d-none");
         $(".cleared-gen").addClass("d-none");
         $(".after-gen").removeClass("d-none");
@@ -88,7 +85,7 @@ $(document).ready( function() {
                 var gifAndRating = $("<div>").append(newGif).append(rating);
                 gifAndRating.addClass("gifAndRating-div")
 
-                $("#gif-display").append(gifAndRating);
+                $("#gif-display").prepend(gifAndRating);
             }
         })
     } 
